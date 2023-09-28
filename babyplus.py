@@ -34,11 +34,11 @@ workbook = xlsxwriter.Workbook(
     r'/Users/kathy/Desktop/aNAUKA/projects/babyplus-converter/data_from_babyplus.xlsx')
 worksheet = workbook.add_worksheet()
 
-feedings = get_all_feedings()[:5]
+feedings = get_all_feedings()[:2]
 
-
+print(feedings)
 for row_num, item_list in enumerate(feedings):
     for element_num, item in enumerate(item_list):
-        worksheet.write(row_num, 0, item)
-        # print(element_num, item)
+        worksheet.write(row_num, element_num, item)
+
 workbook.close()
