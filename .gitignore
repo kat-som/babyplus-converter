@@ -1,4 +1,4 @@
 dumpster.py
 
-.txt
-.json
+*.txt
+*.json
