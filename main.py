@@ -1,4 +1,5 @@
-# IMPORTS #
+import tkinter as tk
+from tkinter import filedialog
 import json
 import xlsxwriter
 from datetime import datetime
@@ -6,10 +7,12 @@ import os
 
 from variables import *
 
+#  Functions
+
 
 def load_data(file_path, aspect_of_baby):
-    data_json = open(file_path)
-    data_dict = json.load(data_json)
+    with open(file_path, 'r') as data_json:
+        data_dict = json.load(data_json)
 
     details_dict = data_dict['tracker_detail']
     main_dict = data_dict[f'{aspect_of_baby}']
@@ -18,7 +21,6 @@ def load_data(file_path, aspect_of_baby):
 
 
 def get_details(file_path, aspect_of_baby):
-
     details_dict, main_dict = load_data(
         file_path=file_path, aspect_of_baby=aspect_of_baby)
 
@@ -33,19 +35,13 @@ def get_details(file_path, aspect_of_baby):
             d_main['note'] = 'no note'
 
     dict_with_notes = main_dict
-
     return dict_with_notes
 
 
 def create_list_of_lists(cols, dict_with_notes):
-    '''
-    creates a list of lists
-    the first list contains column names
-    '''
     list_of_cols = [cols]
     for i in dict_with_notes:
         list_of_cols.append(list(i.values()))
-
     return list_of_cols
 
 
@@ -66,8 +62,6 @@ def create_xlsx(cols, dict_with_notes, file_name):
 
 
 def run_all(cols, file_name, file_path, aspect_of_baby):
-    # file_path = '/Users/kathy/Desktop/aNAUKA/projects/babyplus-converter/babyplus_data_export.json'
-
     dict_with_notes = get_details(
         file_path=file_path, aspect_of_baby=aspect_of_baby)
 
@@ -75,7 +69,68 @@ def run_all(cols, file_name, file_path, aspect_of_baby):
                 file_name=file_name)
 
 
-run_all(cols=cols_poop,
-        file_name='cc',
-        file_path='/Users/kathy/Desktop/aNAUKA/projects/babyplus-converter/babyplus_data_export.json',
-        aspect_of_baby='baby_nappy')
+# Initialize 'file' variable globally
+file = None
+
+# tkinter GUI
+# Tkinter window
+window = tk.Tk()
+window.title("Simple converter app for Babyplus")
+window.geometry("700x350")
+
+# chosen file
+file_label = tk.Label(window, text="Chosen file: None")
+file_label.pack()
+
+
+def choose_file():
+    global file
+    file_path = filedialog.askopenfilename()
+    if file_path:
+        print("Selected file:", file_path)
+        file_label.config(text="Chosen file: " + file_path)
+        file = file_path
+    else:
+        print("No file selected.")
+
+
+def run():
+    global file
+    global checkboxes
+
+    if file:
+        chosen_aspects = [checkbox[0]
+                          for checkbox in checkboxes if checkbox[1].get()]
+        if chosen_aspects:
+            for aspect in chosen_aspects:
+                if aspect == 'nappy':
+                    run_all(cols=cols_poop, file_name='output',
+                            file_path=file, aspect_of_baby='baby_nappy')
+                elif aspect == 'milk':
+                    run_all(cols=cols_bootlefeed, file_name='output_milk',
+                            file_path=file, aspect_of_baby='baby_bottlefeed')
+
+        else:
+            print("Please select an aspect to create the Excel file for.")
+    else:
+        print("Please choose a file first.")
+
+
+# Choose File button
+choose_file_button = tk.Button(window, text="Choose File", command=choose_file)
+choose_file_button.pack()
+
+# Checkboxes
+checkboxes = []
+for option in ["milk", 'nappy']:
+    var = tk.BooleanVar()
+    checkbox = tk.Checkbutton(window, text=option, variable=var)
+    checkbox.pack()
+    checkboxes.append((option, var))
+
+# Button run all
+run_all_button = tk.Button(window, text="Create Excel File", command=run)
+run_all_button.pack()
+
+
+window.mainloop()
