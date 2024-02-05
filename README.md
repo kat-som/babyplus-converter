@@ -19,7 +19,7 @@ Next, install the required dependencies using pip:
 ```bash
 pip install xlsxwriter
 
-Usage
+## Usage
 Run the script baby_tracking_converter.py using a Python interpreter.
 The GUI window will appear.
 Click the "Choose File" button to select a JSON data file containing baby tracking information.
@@ -32,5 +32,5 @@ README.md: Documentation file providing information about the application.
 Contributing
 Contributions to this project are welcome! If you have suggestions for improvements or new features, please feel free to open an issue or submit a pull request.
 
-License
+33License
 This project is licensed under the MIT License. See the LICENSE file for details.
