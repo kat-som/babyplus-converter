@@ -22,20 +22,16 @@ pip install xlsxwriter
 
 ## Usage
 Run the script baby_tracking_converter.py using a Python interpreter.
+
 The GUI window will appear.
+
 Click the "Choose File" button to select a JSON data file containing baby tracking information.
+
 Select the aspects of baby tracking data you want to include by checking the corresponding checkboxes.
+
 Click the "Create Excel File" button to generate Excel files based on the selected aspects.
-File Structure
-baby_tracking_converter.py: Main Python script containing the application logic.
-variables.py: Module containing variables used in the main script.
 
 
-Run the script baby_tracking_converter.py using a Python interpreter.
-The GUI window will appear.
-Click the "Choose File" button to select a JSON data file containing baby tracking information.
-Select the aspects of baby tracking data you want to include by checking the corresponding checkboxes.
-Click the "Create Excel File" button to generate Excel files based on the selected aspects.
 
 ## File Structure
 baby_tracking_converter.py: Main Python script containing the application logic.
