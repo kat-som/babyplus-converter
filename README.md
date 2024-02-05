@@ -18,6 +18,7 @@ Next, install the required dependencies using pip:
 
 ```bash
 pip install xlsxwriter
+```
 
 ## Usage
 Run the script baby_tracking_converter.py using a Python interpreter.
