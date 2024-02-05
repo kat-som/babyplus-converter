@@ -1,12 +1,8 @@
-# babyplus
-
-This app is a companion app to the baby plus app that allows you to track your baby's progress, what he or she eats and other baby-related matters. You can download data in JSON format from the application, but data in this format is difficult to read by humans. When, for example, we go to the doctor, we sometimes need data in table format and that's why I created an application that takes data in json format and turns it into a table in Excel
-
-https://apps.apple.com/us/app/pregnancy-tracker-app/id505864483
 
 # Baby Tracking Data Converter
+The Baby Tracking Data Converter is a simple GUI application built using Python and Tkinter. It facilitates the conversion of JSON data from mobile app related to baby(food, weight etc.) into Excel files for easy management and analysis.
 
-The Baby Tracking Data Converter is a simple GUI application built using Python and Tkinter. It facilitates the conversion of JSON data related to baby tracking into Excel files for easy management and analysis.
+https://apps.apple.com/us/app/pregnancy-tracker-app/id505864483
 
 ## Features
 
