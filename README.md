@@ -2,6 +2,8 @@
 # Baby Tracking Data Converter
 The Baby Tracking Data Converter is a simple GUI application built using Python and Tkinter. It facilitates the conversion of JSON data from mobile app related to baby's development (food, weight etc.) into Excel files for easy management and analysis.
 
+
+Baby+ app in AppStore
 https://apps.apple.com/us/app/pregnancy-tracker-app/id505864483
 
 ## Features
